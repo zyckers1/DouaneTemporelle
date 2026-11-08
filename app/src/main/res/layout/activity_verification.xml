@@ -1,23 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:padding="16dp">
 
-
-    >
-
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/img_passeport_abs"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/text_view"
-        android:layout_gravity="center"
-        android:orientation="vertical"
+        android:layout_weight="0.3"
+        android:src="@android:drawable/ic_menu_myplaces"
+        android:contentDescription="Passeport" />
 
-        />
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:padding="16dp">
 
+        <TextView
+            android:id="@+id/tv_titre_scanner_abs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Billet / Passeport"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"/>
 
+        <TextView
+            android:id="@+id/tv_nom_abs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom: "
+            android:layout_below="@id/tv_titre_scanner_abs"
+            android:layout_marginTop="10dp"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_age_abs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Âge temporel: "
+            android:layout_below="@id/tv_nom_abs"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_motif_abs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Motif: "
+            android:layout_below="@id/tv_age_abs"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btn_approuver_abs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Approuver le saut temporel" />
+
+            <Button
+                android:id="@+id/btn_refuser_abs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Refuser (Risque de paradoxe)" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
