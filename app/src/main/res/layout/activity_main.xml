@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/text_view1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrer votre nom"
+        android:layout_gravity="center_horizontal"
+
+        />
+    <EditText
+        android:hint="entrer votre nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/nom_abs"
+        android:layout_margin="16dp"
+
+    />
+    <EditText
+        android:hint="entrer votre année de naissance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/anne_de_naissance_abs"
+        android:layout_margin="16dp"
+        android:inputType="number"
+
+        />
+    <EditText
+        android:hint="entrer votre année de destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/anne_de_destination_abs"
+        android:layout_margin="16dp"
+        android:inputType="number"
+
+        />
+<RadioGroup
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/radio_group_abs"
+    >
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tourisme"
+        android:layout_gravity="center"
+        android:id="@+id/tourisme_abs"
+        >
+    </RadioButton>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modification du passé"
+        android:layout_gravity="center"
+        android:id="@+id/modification_du_passe_abs"
+        >
+    </RadioButton>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fuite"
+        android:layout_gravity="center"
+        android:id="@+id/fuite_abs"
+        >
+    </RadioButton>
+
+</RadioGroup>
+
+    <Button
+        android:id="@+id/button_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inspecter le profil"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+</LinearLayout>
