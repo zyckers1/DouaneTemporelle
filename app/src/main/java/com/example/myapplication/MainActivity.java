@@ -16,11 +16,14 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+
         EditText nom=findViewById(R.id.nom_abs);
         EditText anne_naissance=findViewById(R.id.anne_de_naissance_abs);
         EditText anne_destination=findViewById(R.id.anne_de_destination_abs);
