@@ -5,78 +5,56 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        // استرجاع العناصر من الواجهة (Récupération des éléments)
+        EditText editNom = findViewById(R.id.nom_abs);
+        EditText editNaissance = findViewById(R.id.anne_de_naissance_abs);
+        EditText editDestination = findViewById(R.id.anne_de_destination_abs);
+        RadioGroup radioGroup = findViewById(R.id.radio_group_abs);
+        Button btnInspecter = findViewById(R.id.button_id_abs);
 
-        EditText nom=findViewById(R.id.nom_abs);
-        EditText anne_naissance=findViewById(R.id.anne_de_naissance_abs);
-        EditText anne_destination=findViewById(R.id.anne_de_destination_abs);
-
-
-        RadioGroup radiogroup=findViewById(R.id.radio_group_abs);
-        Button btnInspecter = findViewById(R.id.button_id);
-
-
-        btnInspecter.setOnClickListener(new View.OnClickListener(){
+        btnInspecter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // قراءة النصوص المدخلة (Lecture des textes saisis)
+                String nomSaisi = editNom.getText().toString();
+                String naissanceSaisie = editNaissance.getText().toString();
+                String destinationSaisie = editDestination.getText().toString();
 
-                String motif="";
-                RadioButton tourisme=findViewById(R.id.tourisme_abs);
-                RadioButton modification_du_passe=findViewById(R.id.modification_du_passe_abs);
-                RadioButton fuite=findViewById(R.id.fuite_abs);
-
-                String no = nom.getText().toString();
-                String anne_nais = anne_naissance.getText().toString();
-                String anne_dest = anne_destination.getText().toString();
-
-
-                if (radiogroup.getCheckedRadioButtonId() != -1) {
-
-                    int checked_id = radiogroup.getCheckedRadioButtonId();
-
-                    if (checked_id == R.id.tourisme_abs) {
-                        motif="tourisme";
-                    }
-                    if (checked_id == R.id.modification_du_passe_abs) {
-                        motif="modification de passe";
-                    }
-                    if (checked_id == R.id.fuite_abs) {
-                        motif="fuite";
-                    }
-
+                String motif = "Tourisme"; // القيمة الافتراضية (Valeur par défaut)
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                if (selectedId == R.id.modification_du_passe_abs) {
+                    motif = "Modification du passé";
+                } else if (selectedId == R.id.fuite_abs) {
+                    motif = "Fuite";
                 }
+
+                // الانتقال إلى النشاط الثاني مع تمرير البيانات (Passage à l'activité 2)
+                Intent intent = new Intent(MainActivity.this, VerificationActivity.class);
+
+                // استخدام المفاتيح الثابتة (Utilisation des méthodes statiques)
+                intent.putExtra(getCleNom("1234"), nomSaisi);
+                intent.putExtra(getCleNaissance("1234"), naissanceSaisie);
+                intent.putExtra(getCleDestination("1234"), destinationSaisie);
+                intent.putExtra(getCleMotif("1234"), motif);
+
+                startActivity(intent);
             }
-
-
-
         });
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-
-
-            return insets;
-        }
-        );
-
     }
 
+    // دوال ثابتة لإنشاء المفاتيح (Méthodes statiques selon la contrainte du prof)
+    public static String getCleNom(String matricule) { return matricule + "_NOM_VOYAGEUR"; }
+    public static String getCleNaissance(String matricule) { return matricule + "_ANNEE_NAISSANCE"; }
+    public static String getCleDestination(String matricule) { return matricule + "_ANNEE_DESTINATION"; }
+    public static String getCleMotif(String matricule) { return matricule + "_MOTIF"; }
 }
